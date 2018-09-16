@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "388551044993",
+    "firebase_url": "https://coutinmessenger.firebaseio.com",
+    "project_id": "coutinmessenger",
+    "storage_bucket": "coutinmessenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388551044993:android:8a76a6c07e8fa3f9",
+        "android_client_info": {
+          "package_name": "coutinhodeveloper.com.coutinmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388551044993-5s4tfmvotp8lhh0vltuv9lkbvjb5p4os.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "coutinhodeveloper.com.coutinmessenger",
+            "certificate_hash": "f2eeef8195c89eb7fe08efa91b182a5e49c74d75"
+          }
+        },
+        {
+          "client_id": "388551044993-gt5kgifgb0vsv3sslb18ujlof1ssi7c1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-J8-tT42ai6BE2lhNONHkvS7g7ahjpN8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388551044993-gt5kgifgb0vsv3sslb18ujlof1ssi7c1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
