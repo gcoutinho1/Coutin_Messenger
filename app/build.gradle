@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     // usei pra sumir o erro da linha 25 appcompat-v7:27.1.1
     implementation 'com.firebase:firebase-client-android:2.5.2'
+    implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

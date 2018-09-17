@@ -44,7 +44,7 @@
         android:text="@string/msg_validacao_dois" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/edit_cod_validacao"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -55,7 +55,7 @@
         android:inputType="number" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/botao_validar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+/** Created by Guilherme Coutinho
+ *  on 16/09/2018
+ */
 
 public class ValidadorActivity extends AppCompatActivity {
 
