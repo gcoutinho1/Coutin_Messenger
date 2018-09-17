@@ -16,7 +16,8 @@
         android:layout_marginTop="219dp"
         android:ems="10"
         android:hint="digite seu nome"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@android:color/black" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -35,7 +36,8 @@
         android:layout_centerVertical="true"
         android:ems="10"
         android:hint="+55"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/edit_cod_area"
@@ -46,7 +48,8 @@
         android:layout_marginStart="59dp"
         android:ems="10"
         android:hint="11"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="@android:color/black" />
 
     <EditText
         android:id="@+id/edit_telefone"
@@ -57,7 +60,8 @@
         android:layout_marginEnd="23dp"
         android:ems="10"
         android:hint="99123-4567"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/botao_cadastrar"

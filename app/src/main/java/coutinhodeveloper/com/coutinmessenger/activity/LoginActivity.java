@@ -10,9 +10,11 @@ import android.widget.EditText;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 
 /** Created by Guilherme Coutinho
  *  on 16/09/2018
@@ -67,7 +69,16 @@ public class LoginActivity extends AppCompatActivity {
                 int numeroRng = rng.nextInt(9999 - 1000) + 1000;
                 String token = String.valueOf( numeroRng );
 
-                
+                //salvando os dados para validação
+                Preferencias preferencias = new Preferencias(LoginActivity.this);
+                preferencias.salvarUsuarioPreferencia(nomeUsuario,telefoneNaoFormatado,token);
+
+                HashMap<String, String> usuario = preferencias.getDadosUsuario();
+
+                Log.i("nome", "n:" + usuario.get("nome") + "FONE:" + usuario.get("telefone") + "token" + usuario.get("token"));
+
+
+
 
 
 

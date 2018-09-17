@@ -52,7 +52,8 @@
         android:layout_marginBottom="196dp"
         android:ems="10"
         android:hint="Digite o código"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/botao_validar"
