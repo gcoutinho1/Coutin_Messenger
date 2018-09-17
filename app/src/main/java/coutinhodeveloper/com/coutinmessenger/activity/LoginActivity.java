@@ -1,5 +1,6 @@
 package coutinhodeveloper.com.coutinmessenger.activity;
 
+import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+import coutinhodeveloper.com.coutinmessenger.helper.Permissao;
 import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 
 /** Created by Guilherme Coutinho
@@ -28,11 +30,18 @@ public class LoginActivity extends AppCompatActivity {
     private EditText codPais;
     private EditText codArea;
     private Button cadastrar;
+    private String[] permissoesNecessarias = new String[]{
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.INTERNET,
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Permissao.validaPermissoes(1,this,permissoesNecessarias);
 
         telefone = findViewById(R.id.edit_telefone);
         nome = findViewById(R.id.edit_nome);
