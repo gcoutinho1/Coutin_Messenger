@@ -45,13 +45,13 @@
 
     <EditText
         android:id="@+id/edit_cod_validacao"
-        android:layout_width="130dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="196dp"
         android:ems="10"
-        android:hint="Digite o código"
+        android:hint="Código"
         android:inputType="number"
         android:textColor="@android:color/black" />
 
