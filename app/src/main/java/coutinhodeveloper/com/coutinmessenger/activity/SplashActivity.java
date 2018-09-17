@@ -1,10 +1,11 @@
-package coutinhodeveloper.com.coutinmessenger;
+package coutinhodeveloper.com.coutinmessenger.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import coutinhodeveloper.com.coutinmessenger.R;
 
 /** Created by Guilherme Coutinho
  *  on 15/09/2018
@@ -29,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void mostrarMainActivity() {
-        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
         startActivity(intent);
         finish();
 

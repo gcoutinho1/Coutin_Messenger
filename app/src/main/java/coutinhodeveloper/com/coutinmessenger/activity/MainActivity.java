@@ -1,9 +1,11 @@
-package coutinhodeveloper.com.coutinmessenger;
+package coutinhodeveloper.com.coutinmessenger.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.firebase.client.Firebase;
+
+import coutinhodeveloper.com.coutinmessenger.R;
 
 /** Created by Guilherme Coutinho
  *  on 15/09/2018
@@ -18,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        /*
         Firebase.setAndroidContext(this);
         firebase = new Firebase("https://coutinmessenger.firebaseio.com/mensagens");
-        firebase.setValue("teste do firebase");
+        firebase.setValue("teste do firebase"); */
 
     }
 }

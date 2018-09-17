@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Coutin Messenger</string>
+    <string name="botao_cadastrar">Cadastrar</string>
+    <string name="botao_validar">Validar</string>
+    <string name="texto_validacao">Validação</string>
+    <string name="msg_validacao_um">você recebeu um SMS para validação do seu número</string>
+    <string name="msg_validacao_dois">Digite o código de validação abaixo</string>
 </resources>

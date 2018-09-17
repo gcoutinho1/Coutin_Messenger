@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_dark"
-    tools:context=".SplashActivity">
+    android:background="@color/colorAccent"
+    tools:context=".activity.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,7 +17,6 @@
 
     <TextView
         android:id="@+id/textView"
-        android:textStyle="bold"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_below="@+id/imageView3"
@@ -25,7 +24,8 @@
         android:text="COUTIN MESSENGER"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/black"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView3"
