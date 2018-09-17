@@ -30,7 +30,7 @@ import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText telefone;
+    /*private EditText telefone;
     private EditText nome;
     private EditText codPais;
     private EditText codArea;
@@ -39,14 +39,16 @@ public class LoginActivity extends AppCompatActivity {
                 Manifest.permission.SEND_SMS,
                 Manifest.permission.INTERNET,
 
-    };
+    }; */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Permissao.validaPermissoes(1,this,permissoesNecessarias);
+
+
+        /*Permissao.validaPermissoes(1,this,permissoesNecessarias);
 
         telefone = findViewById(R.id.edit_telefone);
         nome = findViewById(R.id.edit_nome);
@@ -107,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 /*
                 HashMap<String, String> usuario = preferencias.getDadosUsuario();
-                Log.i("nome", "n:" + usuario.get("nome") + "FONE:" + usuario.get("telefone") + "token" + usuario.get("token")); */
+                Log.i("nome", "n:" + usuario.get("nome") + "FONE:" + usuario.get("telefone") + "token" + usuario.get("token"));
 
 
 
@@ -164,6 +166,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         AlertDialog dialog = builder.create();
-        dialog.show();
+        dialog.show(); */
+    }
+
+    public void abrirCadastroUsuario(View view){
+        Intent intent = new Intent(LoginActivity.this,CadastroUsuarioactivity.class);
+        startActivity(intent);
     }
 }

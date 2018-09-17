@@ -19,7 +19,7 @@ import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
  *  on 16/09/2018
  */
 
-public class ValidadorActivity extends AppCompatActivity {
+ /*public class ValidadorActivity extends AppCompatActivity {
 
     private EditText codValidacao;
     private Button validar;
@@ -57,4 +57,4 @@ public class ValidadorActivity extends AppCompatActivity {
             }
         });
     }
-}
+} */

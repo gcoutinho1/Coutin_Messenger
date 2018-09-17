@@ -5,19 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
+    android:gravity="center_vertical|center_horizontal"
     tools:context=".activity.LoginActivity">
-
-    <EditText
-        android:id="@+id/edit_nome"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="219dp"
-        android:ems="10"
-        android:hint="digite seu nome"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/black" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -28,49 +17,58 @@
         android:layout_marginTop="24dp"
         app:srcCompat="@drawable/mainlogo" />
 
-    <EditText
-        android:id="@+id/edit_cod_pais"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="+55"
-        android:inputType="number"
-        android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageView7"
+        android:layout_centerHorizontal="true"
+        android:text="COUTIN MESSENGER"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edit_cod_area"
-        android:layout_width="50dp"
+        android:id="@+id/edit_login_email"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="59dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="245dp"
         android:ems="10"
-        android:hint="11"
-        android:inputType="number"
-        android:textColor="@android:color/black" />
+        android:hint="Digite seu Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/edit_telefone"
-        android:layout_width="231dp"
+        android:id="@+id/edit_login_senha"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="23dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edit_login_email"
         android:ems="10"
-        android:hint="99123-4567"
-        android:inputType="number"
-        android:textColor="@android:color/black" />
+        android:hint="Digite sua senha"
+        android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/botao_cadastrar"
-        android:layout_width="151dp"
+        android:id="@+id/botao_logar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="199dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/botao_cadastrar" />
+        android:layout_marginBottom="164dp"
+        android:text="@string/botao_logar" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="125dp"
+        android:onClick="abrirCadastroUsuario"
+        android:text="@string/texto_cadastre"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

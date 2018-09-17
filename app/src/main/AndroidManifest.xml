@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.ValidadorActivity"></activity>
+        <activity android:name=".activity.ValidadorActivity" />
+        <activity android:name=".activity.CadastroUsuarioactivity"></activity>
     </application>
 
 </manifest>
