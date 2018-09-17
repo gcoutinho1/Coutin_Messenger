@@ -2,6 +2,7 @@ package coutinhodeveloper.com.coutinmessenger.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -68,14 +69,22 @@ public class LoginActivity extends AppCompatActivity {
                 Random rng = new Random();
                 int numeroRng = rng.nextInt(9999 - 1000) + 1000;
                 String token = String.valueOf( numeroRng );
+                String mensagemEnvio = "CoutinMessenger código de confirmação: " + token;
 
                 //salvando os dados para validação
                 Preferencias preferencias = new Preferencias(LoginActivity.this);
                 preferencias.salvarUsuarioPreferencia(nomeUsuario,telefoneNaoFormatado,token);
 
-                HashMap<String, String> usuario = preferencias.getDadosUsuario();
+                // envio de sms
+                 telefoneNaoFormatado = "8135";
+                 boolean enviadoSMS = enviaSMS("+" + telefoneNaoFormatado, mensagemEnvio);
 
-                Log.i("nome", "n:" + usuario.get("nome") + "FONE:" + usuario.get("telefone") + "token" + usuario.get("token"));
+
+
+
+                /*
+                HashMap<String, String> usuario = preferencias.getDadosUsuario();
+                Log.i("nome", "n:" + usuario.get("nome") + "FONE:" + usuario.get("telefone") + "token" + usuario.get("token")); */
 
 
 
@@ -84,6 +93,23 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    private boolean enviaSMS(String telefone, String mensagem){
+
+        try{
+
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(telefone, null, mensagem, null, null);
+            return  true;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+
+        }
 
 
     }

@@ -5,9 +5,9 @@
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">#FF8C00</item>
-        <item name="colorPrimaryDark">#FF4500</item>
-        <item name="colorAccent">#FFA500</item>
+        <item name="colorPrimary">#6495ED</item>
+        <item name="colorPrimaryDark">#00008B</item>
+        <item name="colorAccent">#B0C4DE</item>
     </style>
 
     <style name="AppCompat.Fullscreen"
