@@ -1,9 +1,14 @@
 package coutinhodeveloper.com.coutinmessenger.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.firebase.client.Firebase;
+
+import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
+
 /** Created by Guilherme Coutinho
  *  on 17/09/2018
  */
-
+@JsonIgnoreProperties({"id","senha"})
 public class Usuario {
 
     private String id;
@@ -13,6 +18,12 @@ public class Usuario {
 
     public Usuario(){
 
+    }
+
+    public void salvar(){
+        Firebase firebase = ConfiguracaoFirebase.getFirebase();
+        firebase = firebase.child("usuarios").child(getId());
+        firebase.setValue(this);
     }
 
     public String getId() {

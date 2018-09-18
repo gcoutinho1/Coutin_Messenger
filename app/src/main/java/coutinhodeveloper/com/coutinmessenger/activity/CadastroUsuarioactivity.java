@@ -32,6 +32,7 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private Firebase firebase;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
