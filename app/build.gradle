@@ -37,8 +37,11 @@ dependencies {
     implementation 'com.android.support:mediarouter-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     // usei pra sumir o erro da linha 25 appcompat-v7:27.1.1
-    implementation 'com.firebase:firebase-client-android:2.5.2'
+    implementation 'com.firebase:firebase-client-android:2.5.2+'
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.3'
+    implementation 'com.google.firebase:firebase-database:16.0.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

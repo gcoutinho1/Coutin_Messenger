@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+
 import java.util.Map;
 
 import coutinhodeveloper.com.coutinmessenger.R;
@@ -27,7 +28,9 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private EditText senha;
     private Button botaoCadastrar;
     private Usuario usuario;
+
     private Firebase firebase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,9 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 usuario = new Usuario();
-                usuario.setNome(nome.getText().toString());
-                usuario.setEmail(email.getText().toString());
-                usuario.setSenha(senha.getText().toString());
+                usuario.setNome( nome.getText().toString() );
+                usuario.setEmail( email.getText().toString() );
+                usuario.setSenha( senha.getText().toString() );
                 cadastrarUsuario();
 
             }
@@ -62,6 +65,12 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
                 new Firebase.ValueResultHandler<Map<String, Object>>() {
                     @Override
                     public void onSuccess(Map<String, Object> stringObjectMap) {
+                        Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
+                        usuario.setId(stringObjectMap.get("uid").toString());
+                        usuario.salvar();
+
+                        finish();
+
 
                     }
 

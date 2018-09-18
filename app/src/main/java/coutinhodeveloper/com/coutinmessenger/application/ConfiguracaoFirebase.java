@@ -12,8 +12,9 @@ public final class ConfiguracaoFirebase {
     private static final String URL_FIREBASE = "https://coutinmessenger.firebaseio.com/";
 
     public static Firebase getFirebase(){
-        if (firebase == null){
-            firebase = new Firebase(URL_FIREBASE);
+
+        if (firebase==null){
+            firebase = new Firebase( URL_FIREBASE );
 
         }
 
