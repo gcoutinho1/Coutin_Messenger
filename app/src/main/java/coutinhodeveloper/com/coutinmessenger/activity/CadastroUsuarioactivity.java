@@ -11,6 +11,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 
+
 import java.util.Map;
 
 import coutinhodeveloper.com.coutinmessenger.R;
@@ -29,7 +30,7 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private Button botaoCadastrar;
     private Usuario usuario;
 
-    private Firebase firebase;
+    public Firebase firebase;
 
 
 

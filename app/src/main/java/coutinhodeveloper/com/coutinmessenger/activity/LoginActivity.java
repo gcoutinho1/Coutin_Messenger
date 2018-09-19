@@ -12,6 +12,7 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 import coutinhodeveloper.com.coutinmessenger.model.Usuario;
@@ -23,6 +24,7 @@ import coutinhodeveloper.com.coutinmessenger.model.Usuario;
 
 public class LoginActivity extends AppCompatActivity {
 
+    //private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     private Firebase firebase;
     private EditText email;
     private EditText senha;
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //databaseReference = ConfiguracaoFirebase.getFirebase();
         firebase = ConfiguracaoFirebase.getFirebase();
         email = findViewById(R.id.edit_login_email);
         senha = findViewById(R.id.edit_login_senha);
