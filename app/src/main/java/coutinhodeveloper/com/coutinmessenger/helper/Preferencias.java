@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Preferencias {
 
-    private Context contexto;
+    /* private Context contexto;
     private SharedPreferences preferences;
     private final String NOME_ARQUIVO = "coutinpreferencias";
     private int MODE = 0;
@@ -43,5 +43,5 @@ public class Preferencias {
         dadosUsuario.put(CHAVE_TELEFONE,preferences.getString(CHAVE_TELEFONE, null));
         dadosUsuario.put(CHAVE_TOKEN,preferences.getString(CHAVE_TOKEN, null));
         return  dadosUsuario;
-    }
+    } */
 }

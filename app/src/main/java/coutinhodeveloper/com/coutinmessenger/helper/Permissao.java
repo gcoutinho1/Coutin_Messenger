@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Permissao {
 
-    public static boolean validaPermissoes(int requestCode, Activity activity, String[] permissoes){
+    /* public static boolean validaPermissoes(int requestCode, Activity activity, String[] permissoes){
 
         if (Build.VERSION.SDK_INT >= 23){
 
@@ -41,6 +41,8 @@ public class Permissao {
 
         return  true;
     }
+
+    colocar no manifest <uses-permission android:name="android.permission.SEND_SMS" /> */
 
 
 
