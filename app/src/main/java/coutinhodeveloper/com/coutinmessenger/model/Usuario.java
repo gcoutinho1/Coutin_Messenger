@@ -2,6 +2,7 @@ package coutinhodeveloper.com.coutinmessenger.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
 
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 
@@ -21,7 +22,7 @@ public class Usuario {
     }
 
     public void salvar(){
-        Firebase firebase = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference firebase = ConfiguracaoFirebase.getFirebase();
         firebase = firebase.child("usuarios").child(getId());
         firebase.setValue(this);
     }

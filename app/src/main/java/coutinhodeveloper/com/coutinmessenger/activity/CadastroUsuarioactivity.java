@@ -70,18 +70,25 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
 
     private void cadastrarUsuario(){
 
-        //firebase = ConfiguracaoFirebase.getFirebase();
+        mAuth = FirebaseAuth.getInstance();
+        firebase = ConfiguracaoFirebase.getFirebase();
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                 usuario.getEmail(),
                 usuario.getSenha()
                 ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                //Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
+
+
+
                 if (!task.isSuccessful()){
+                    usuario.salvar();
                     Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
+                    finish();
+
 
                 }
+
             }
         });
 

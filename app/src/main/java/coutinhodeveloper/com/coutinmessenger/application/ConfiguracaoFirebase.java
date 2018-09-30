@@ -1,8 +1,11 @@
 package coutinhodeveloper.com.coutinmessenger.application;
 
 
-import com.firebase.client.Firebase;
+import android.app.Application;
 
+import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /** Created by Guilherme Coutinho
@@ -11,13 +14,13 @@ import com.firebase.client.Firebase;
 
 public final class ConfiguracaoFirebase  {
 
-    private static Firebase firebase;
+    private static DatabaseReference firebase;
     private static final String URL_FIREBASE = "https://coutinmessenger.firebaseio.com/";
 
-    public static Firebase getFirebase(){
+    public static DatabaseReference getFirebase(){
 
         if (firebase==null){
-            firebase = new Firebase( URL_FIREBASE );
+            firebase = FirebaseDatabase.getInstance().getReference();
 
          }
 
