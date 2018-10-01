@@ -8,5 +8,16 @@
 
     <include android:id="@+id/toolbar_principal"
         layout="@layout/toolbar"/>
+    <coutinhodeveloper.com.coutinmessenger.helper.SlidingTabLayout
+        android:id="@+id/stl_tabs"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></coutinhodeveloper.com.coutinmessenger.helper.SlidingTabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_pagina"
+        android:layout_width="match_parent"
+
+        android:layout_height="0dp"></android.support.v4.view.ViewPager>
 
 </RelativeLayout>

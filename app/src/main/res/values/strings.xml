@@ -9,4 +9,7 @@
     <string name="msg_validacao_dois">Digite o código de validação abaixo</string>
     <string name="botao_logar">LOGAR</string>
     <string name="texto_cadastre">Não tem conta ? Cadastre-se</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
