@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
+import coutinhodeveloper.com.coutinmessenger.helper.Base64Custom;
+import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 import coutinhodeveloper.com.coutinmessenger.model.Usuario;
 
 
@@ -85,6 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            // salvando email no SharedPreferences
+                            String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                            Preferencias preferencias = new Preferencias(LoginActivity.this);
+                            preferencias.salvarDados(identificadorUsuarioLogado);
+
                             abrirTelaPrincipal();
                         }else {
                             Toast.makeText(LoginActivity.this, "Falha ao logar",Toast.LENGTH_LONG).show();

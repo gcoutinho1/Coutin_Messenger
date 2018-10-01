@@ -22,6 +22,7 @@ import java.util.Map;
 
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
+import coutinhodeveloper.com.coutinmessenger.helper.Base64Custom;
 import coutinhodeveloper.com.coutinmessenger.model.Usuario;
 
 /** Created by Guilherme Coutinho
@@ -84,7 +85,9 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
-                    usuario.setId(FirebaseAuth.getInstance().getUid());
+                    String identificador = Base64Custom.converterBase64(usuario.getEmail());
+                    usuario.setId(identificador);
+                    //usuario.setId(FirebaseAuth.getInstance().getUid());
                     usuario.salvar();
                     Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
                     finish();

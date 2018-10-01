@@ -7,9 +7,18 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contatos" />
+        android:text="Contatos" /> -->
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/cinzaClaro"
+        android:dividerHeight="1dp"
+        android:id="@+id/lv_contatos"
+        android:layout_gravity="center_horizontal|top"/>
 </FrameLayout>

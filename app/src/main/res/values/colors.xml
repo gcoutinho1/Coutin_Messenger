@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#191970</color>
     <color name="colorAccent">#4682b4</color>
     <color name="colorPrimaryDarker">#191990</color>
+    <color name="corDoTexto">#FFFFFF</color>
+
+    <!-- custom colors -->
+    <color name="cinzaClaro">#CCCCCC</color>
 </resources>
