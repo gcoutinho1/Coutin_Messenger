@@ -52,6 +52,7 @@
 
     <Button
         android:id="@+id/botao_logar"
+        android:theme="@style/botaoPadrao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

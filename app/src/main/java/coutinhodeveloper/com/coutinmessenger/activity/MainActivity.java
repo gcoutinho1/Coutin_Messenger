@@ -3,6 +3,10 @@ package coutinhodeveloper.com.coutinmessenger.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference firebase;
     private FirebaseAuth firebaseAuth;
-    private Button botaoSair;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +35,41 @@ public class MainActivity extends AppCompatActivity {
 
         firebase = ConfiguracaoFirebase.getFirebase();
         firebaseAuth = FirebaseAuth.getInstance();
-        botaoSair = findViewById(R.id.botao_sair);
-        botaoSair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        toolbar = findViewById(R.id.toolbar_principal);
+        toolbar.setTitle("Coutin Messenger");
+        setSupportActionBar(toolbar);
 
 
-        /*
-        Firebase.setAndroidContext(this);
-        firebase = new Firebase("https://coutinmessenger.firebaseio.com/mensagens");
-        firebase.setValue("teste do firebase"); */
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.item_sair :
+                deslogarUsuario();
+                return true;
+            case R.id.action_settings :
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    public void deslogarUsuario(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+
 
     }
 }

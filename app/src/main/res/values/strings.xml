@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Coutin Messenger</string>
+    <string name="action_settings">Configurações</string>
+    <string name="item_sair">Sair</string>
     <string name="botao_cadastrar">Cadastrar</string>
     <string name="botao_validar">Validar</string>
     <string name="texto_validacao">Validação</string>

@@ -57,5 +57,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="174dp"
+        android:theme="@style/botaoPadrao"
         android:text="@string/botao_cadastrar" />
 </RelativeLayout>
