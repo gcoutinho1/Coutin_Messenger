@@ -3,13 +3,14 @@ package coutinhodeveloper.com.coutinmessenger.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.firebase.client.Firebase;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 
 /** Created by Guilherme Coutinho
  *  on 17/09/2018
  */
-@JsonIgnoreProperties({"id","senha"})
+//@JsonIgnoreProperties({"id","senha"})
 public class Usuario {
 
     private String id;

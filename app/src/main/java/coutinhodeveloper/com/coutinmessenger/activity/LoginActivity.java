@@ -33,8 +33,7 @@ import coutinhodeveloper.com.coutinmessenger.model.Usuario;
 public class LoginActivity extends AppCompatActivity {
 
     //private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference firebase; //old version
-   // private DatabaseReference firebase;
+    private DatabaseReference firebase;
     private EditText email;
     private EditText senha;
     private Button botaoLogar;
@@ -51,11 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         //databaseReference = ConfiguracaoFirebase.getFirebase();
         firebase = ConfiguracaoFirebase.getFirebase();
 
-
-
-
         verificarUsuarioLogado();
-
 
         email = findViewById(R.id.edit_login_email);
         senha = findViewById(R.id.edit_login_senha);
@@ -85,11 +80,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private void validarLogin(){
 
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha())
+        mAuth.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        abrirTelaPrincipal();
+                        if (task.isSuccessful()){
+                            abrirTelaPrincipal();
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Falha ao logar",Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 });
     }
@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull final FirebaseAuth firebaseAuth) {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    abrirTelaPrincipal();
                     Log.i("AuthStateChanged", "User is signed in with uid: " + user.getUid());
                 } else {
                     Log.i("AuthStateChanged", "No user is signed in.");

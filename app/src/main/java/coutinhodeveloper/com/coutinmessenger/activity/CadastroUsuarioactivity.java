@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.Map;
@@ -35,8 +36,10 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private Button botaoCadastrar;
     private Usuario usuario;
 
-    public DatabaseReference firebase;
+    public DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
     private FirebaseAuth mAuth;
+
+
 
 
 
@@ -64,6 +67,7 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
                 usuario.setSenha( senha.getText().toString() );
                 cadastrarUsuario();
 
+
             }
         });
     }
@@ -71,22 +75,24 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private void cadastrarUsuario(){
 
         mAuth = FirebaseAuth.getInstance();
-        firebase = ConfiguracaoFirebase.getFirebase();
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+        //firebase = ConfiguracaoFirebase.getFirebase();
+        mAuth.createUserWithEmailAndPassword(
                 usuario.getEmail(),
                 usuario.getSenha()
                 ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-
-
-                if (!task.isSuccessful()){
+                if (task.isSuccessful()){
+                    usuario.setId(FirebaseAuth.getInstance().getUid());
                     usuario.salvar();
                     Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
                     finish();
 
 
+
+                }else {
+                    Toast.makeText(CadastroUsuarioactivity.this, "Falha ao cadastrar",Toast.LENGTH_LONG).show();
                 }
 
             }
