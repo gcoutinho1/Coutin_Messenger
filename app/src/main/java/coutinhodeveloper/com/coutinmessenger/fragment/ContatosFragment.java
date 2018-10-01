@@ -1,6 +1,7 @@
 package coutinhodeveloper.com.coutinmessenger.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+import coutinhodeveloper.com.coutinmessenger.activity.ChatActivity;
+import coutinhodeveloper.com.coutinmessenger.adapter.ContatoAdapter;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 import coutinhodeveloper.com.coutinmessenger.model.Contato;
@@ -31,7 +34,7 @@ public class ContatosFragment extends Fragment {
 
     private ListView listView;
     private ArrayAdapter adapter;
-    private ArrayList<String> contatos;
+    private ArrayList<Contato> contatos;
     private DatabaseReference firebase;
     private ValueEventListener valueEventListenerContato;
 
@@ -66,12 +69,13 @@ public class ContatosFragment extends Fragment {
 
         // montar listview e adapter
         listView = view.findViewById(R.id.lv_contatos);
-        adapter = new ArrayAdapter(
+        /*adapter = new ArrayAdapter(
                 getActivity(),
                 R.layout.lista_contatos,
                 contatos
 
-        );
+        ); */
+        adapter = new ContatoAdapter(getActivity(),contatos);
         listView.setAdapter(adapter);
         // recuperando contatos do firebase
         Preferencias preferencias = new Preferencias(getActivity());
@@ -91,7 +95,7 @@ public class ContatosFragment extends Fragment {
                 for (DataSnapshot dados : dataSnapshot.getChildren()){
 
                     Contato contato = dados.getValue(Contato.class);
-                    contatos.add(contato.getNome());
+                    contatos.add(contato);
 
                 }
                 adapter.notifyDataSetChanged();
@@ -107,7 +111,16 @@ public class ContatosFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+
+                //Recupera dados que vão passar
+                Contato contato = contatos.get(position);
+
+
+                // envia dados para o chatActivity
+                intent.putExtra("nome",contato.getNome());
+                intent.putExtra("email",contato.getEmail());
+                startActivity(intent);
             }
         });
 

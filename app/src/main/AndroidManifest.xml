@@ -4,14 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
+        android:name=".application.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".application.CustomApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity" />
         <activity
@@ -24,8 +23,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.CadastroUsuarioactivity" >
-
+        <activity android:name=".activity.CadastroUsuarioactivity"></activity>
+        <activity
+            android:name=".activity.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="coutinhodeveloper.com.coutinmessenger.activity.MainActivity" />
         </activity>
     </application>
 
