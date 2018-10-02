@@ -2,12 +2,26 @@ package coutinhodeveloper.com.coutinmessenger.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+import coutinhodeveloper.com.coutinmessenger.adapter.ConversaAdapter;
+import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
+import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
+import coutinhodeveloper.com.coutinmessenger.model.Conversa;
 
 
 /** Created by Guilherme Coutinho
@@ -18,6 +32,11 @@ import coutinhodeveloper.com.coutinmessenger.R;
  * A simple {@link Fragment} subclass.
  */
 public class ConversasFragment extends Fragment {
+    private ListView listView;
+    private ArrayAdapter<Conversa> arrayAdapter;
+    private ArrayList<Conversa> conversas;
+    private DatabaseReference firebase;
+    private ValueEventListener valueEventListenerConversas;
 
 
     public ConversasFragment() {
@@ -25,11 +44,65 @@ public class ConversasFragment extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_conversas, container, false);
+        View view = inflater.inflate(R.layout.fragment_conversas, container, false);
+
+        //montando listview e adapter
+        conversas = new ArrayList<>();
+        listView = view.findViewById(R.id.lv_conversas);
+        arrayAdapter = new ConversaAdapter(getActivity(),conversas);
+        listView.setAdapter(arrayAdapter);
+
+        //recuperando conversas do firebase
+        Preferencias preferencias = new Preferencias(getActivity());
+        String idUsuarioLogado = preferencias.getIdentificador();
+
+        //instancia do fb
+        firebase = ConfiguracaoFirebase.getFirebase()
+                .child("conversas")
+                .child(idUsuarioLogado);
+        valueEventListenerConversas = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                conversas.clear();
+                for (DataSnapshot dados : dataSnapshot.getChildren()){
+                    Conversa conversa = dados.getValue(Conversa.class);
+                    conversas.add(conversa);
+
+                }
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+
+        firebase.addValueEventListener(valueEventListenerConversas);
+
+
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        firebase.removeEventListener(valueEventListenerConversas);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebase.addValueEventListener(valueEventListenerConversas);
+
     }
 
 }

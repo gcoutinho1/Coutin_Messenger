@@ -156,18 +156,26 @@ public class ChatActivity extends AppCompatActivity {
 
                     //salvando conversa do remetente no firebase
                     conversa = new Conversa();
-                    conversa.setIdUsuario(idUsuarioLogado);
-                    conversa.setNome(nomeUsuarioLogado);
+                    conversa.setIdUsuario(idUsuarioDestinatario);
+                    conversa.setNome(nomeUsuarioDestinatario);
                     conversa.setMensagem(textoMensagem);
-                    salvarConversaFirebase(idUsuarioLogado,idUsuarioDestinatario,conversa);
+                    Boolean retornoConversaRe = salvarConversaFirebase(idUsuarioLogado,idUsuarioDestinatario,conversa);
+                    if (!retornoConversaRe){
+                        Toast.makeText(ChatActivity.this,"problema ao salvar conversa",Toast.LENGTH_LONG).show();
+
+                    }
 
                     //salvando conversa do destinatario no firebase
 
                     conversa = new Conversa();
-                    conversa.setIdUsuario(idUsuarioDestinatario);
-                    conversa.setNome(nomeUsuarioDestinatario);
+                    conversa.setIdUsuario(idUsuarioLogado);
+                    conversa.setNome(nomeUsuarioLogado);
                     conversa.setMensagem(textoMensagem);
-                    salvarConversaFirebase(idUsuarioDestinatario,idUsuarioLogado,conversa);
+                    Boolean retornoConversaDe = salvarConversaFirebase(idUsuarioDestinatario,idUsuarioLogado,conversa);
+                    if (!retornoConversaDe){
+                        Toast.makeText(ChatActivity.this,"problema ao salvar conversa",Toast.LENGTH_LONG).show();
+
+                    }
 
                     //apagar msg após enviado
                     editMensagem.setText("");

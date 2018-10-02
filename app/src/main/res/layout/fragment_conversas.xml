@@ -7,9 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Conversas" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/cinzaClaro"
+        android:dividerHeight="1dp"
+        android:id="@+id/lv_conversas"
+        android:layout_gravity="center_horizontal|top"/>
 </FrameLayout>
