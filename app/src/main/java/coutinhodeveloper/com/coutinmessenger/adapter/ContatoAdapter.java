@@ -15,6 +15,10 @@ import java.util.List;
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.model.Contato;
 
+/** Created by Guilherme Coutinho
+ *  on 01/10/2018
+ */
+
 public class ContatoAdapter extends ArrayAdapter<Contato> {
 
      private Context context;

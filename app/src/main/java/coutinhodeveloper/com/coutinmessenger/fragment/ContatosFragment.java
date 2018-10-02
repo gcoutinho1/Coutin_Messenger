@@ -27,6 +27,10 @@ import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 import coutinhodeveloper.com.coutinmessenger.model.Contato;
 
+/** Created by Guilherme Coutinho
+ *  on 01/10/2018
+ */
+
 /**
  * A simple {@link Fragment} subclass.
  */

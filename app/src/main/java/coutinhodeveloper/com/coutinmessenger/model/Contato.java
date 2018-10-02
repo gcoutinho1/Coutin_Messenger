@@ -1,5 +1,9 @@
 package coutinhodeveloper.com.coutinmessenger.model;
 
+/** Created by Guilherme Coutinho
+ *  on 01/10/2018
+ */
+
 public class Contato {
     private String identificadorUsuario;
     private String nome;

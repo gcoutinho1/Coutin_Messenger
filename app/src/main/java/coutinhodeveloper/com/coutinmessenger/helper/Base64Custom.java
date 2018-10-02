@@ -2,6 +2,10 @@ package coutinhodeveloper.com.coutinmessenger.helper;
 
 import java.util.Base64;
 
+/** Created by Guilherme Coutinho
+ *  on 01/10/2018
+ */
+
 
 public class Base64Custom {
 

@@ -14,6 +14,8 @@
         android:id="@+id/lv_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_mensagem"
+        android:layout_below="@+id/tb_chat"
         android:padding="8dp"
         />
     
