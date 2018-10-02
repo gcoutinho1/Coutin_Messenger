@@ -1,12 +1,14 @@
 package coutinhodeveloper.com.coutinmessenger.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,8 +20,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import coutinhodeveloper.com.coutinmessenger.R;
+import coutinhodeveloper.com.coutinmessenger.activity.ChatActivity;
 import coutinhodeveloper.com.coutinmessenger.adapter.ConversaAdapter;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
+import coutinhodeveloper.com.coutinmessenger.helper.Base64Custom;
 import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
 import coutinhodeveloper.com.coutinmessenger.model.Conversa;
 
@@ -85,9 +89,20 @@ public class ConversasFragment extends Fragment {
 
         firebase.addValueEventListener(valueEventListenerConversas);
 
-
-
-
+        // evento de click na lista de conversas
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //recuperar conversa para position
+                Conversa conversa = conversas.get(position);
+                //intent para chatActivity
+                Intent intent = new Intent(getActivity(),ChatActivity.class);
+                String email = Base64Custom.decodificarBase64(conversa.getIdUsuario());
+                intent.putExtra("email", email);
+                intent.putExtra("nome",conversa.getNome());
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

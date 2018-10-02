@@ -1,5 +1,9 @@
 package coutinhodeveloper.com.coutinmessenger.model;
 
+/** Created by Guilherme COutinho
+ *  on 02/10/2018
+ */
+
 public class Conversa {
 
     private String idUsuario;

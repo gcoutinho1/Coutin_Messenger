@@ -16,6 +16,11 @@ import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.model.Conversa;
 
 
+/** Created by Guilherme Coutinho
+ *  on 02/10/2018
+ */
+
+
 
 public class ConversaAdapter extends ArrayAdapter<Conversa> {
 
