@@ -18,7 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 
 import coutinhodeveloper.com.coutinmessenger.R;
@@ -42,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private Usuario usuario;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private String idUsuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,12 +91,32 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            // salvando email no SharedPreferences
-                            String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
-                            Preferencias preferencias = new Preferencias(LoginActivity.this);
-                            preferencias.salvarDados(identificadorUsuarioLogado);
+                            //recuperando dados do usuario
+                            idUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                            firebase = ConfiguracaoFirebase.getFirebase()
+                                    .child("usuarios")
+                                    .child(idUsuarioLogado);
+                            firebase.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    Usuario usuario = dataSnapshot.getValue(Usuario.class);
 
-                            abrirTelaPrincipal();
+                                    // salvando email no SharedPreferences
+                                    String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                                    preferencias.salvarDados(identificadorUsuarioLogado,usuario.getNome());
+
+                                    abrirTelaPrincipal();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
+
                         }else {
                             Toast.makeText(LoginActivity.this, "Falha ao logar",Toast.LENGTH_LONG).show();
                         }

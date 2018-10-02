@@ -25,6 +25,7 @@ import coutinhodeveloper.com.coutinmessenger.adapter.ChatAdapter;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 import coutinhodeveloper.com.coutinmessenger.helper.Base64Custom;
 import coutinhodeveloper.com.coutinmessenger.helper.Preferencias;
+import coutinhodeveloper.com.coutinmessenger.model.Conversa;
 import coutinhodeveloper.com.coutinmessenger.model.Mensagem;
 
 /** Created by Guilherme Coutinho
@@ -41,6 +42,7 @@ public class ChatActivity extends AppCompatActivity {
     private ArrayAdapter<Mensagem> arrayAdapter;
     private ArrayList<Mensagem> mensagens;
     private ValueEventListener valueEventListenerChat;
+    private Conversa conversa;
 
 
     //destinatario
@@ -49,6 +51,7 @@ public class ChatActivity extends AppCompatActivity {
 
     //remetente
     private String idUsuarioLogado;
+    private String nomeUsuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class ChatActivity extends AppCompatActivity {
         // recuperando dados usuario logado
         Preferencias preferencias = new Preferencias(ChatActivity.this);
         idUsuarioLogado = preferencias.getIdentificador();
+        nomeUsuarioLogado = preferencias.getNome();
 
         //recuperar dados enviados na intent
         Bundle extra = getIntent().getExtras();
@@ -136,10 +140,34 @@ public class ChatActivity extends AppCompatActivity {
                     mensagem.setIdUsuario(idUsuarioLogado);
                     mensagem.setIdMensagem(textoMensagem);
                     //salvando msg do remetente
-                    salvarMensagemFirebase(idUsuarioLogado, idUsuarioDestinatario, mensagem);
+                    Boolean retornoRemetente = salvarMensagemFirebase(idUsuarioLogado, idUsuarioDestinatario, mensagem);
+                    if (!retornoRemetente){
+                        Toast.makeText(ChatActivity.this,"Problema ao enviar a mensagem, tente de novo",Toast.LENGTH_LONG).show();
+
+                    }
 
                     //salvando msg do destinatario
-                    salvarMensagemFirebase(idUsuarioDestinatario,idUsuarioLogado, mensagem);
+                    Boolean retornoDestinatario = salvarMensagemFirebase(idUsuarioDestinatario,idUsuarioLogado, mensagem);
+                    if (!retornoDestinatario){
+                        Toast.makeText(ChatActivity.this,"Problema ao enviar a mensagem, tente de novo",Toast.LENGTH_LONG).show();
+                    }
+
+                    // salvando conversas
+
+                    //salvando conversa do remetente no firebase
+                    conversa = new Conversa();
+                    conversa.setIdUsuario(idUsuarioLogado);
+                    conversa.setNome(nomeUsuarioLogado);
+                    conversa.setMensagem(textoMensagem);
+                    salvarConversaFirebase(idUsuarioLogado,idUsuarioDestinatario,conversa);
+
+                    //salvando conversa do destinatario no firebase
+
+                    conversa = new Conversa();
+                    conversa.setIdUsuario(idUsuarioDestinatario);
+                    conversa.setNome(nomeUsuarioDestinatario);
+                    conversa.setMensagem(textoMensagem);
+                    salvarConversaFirebase(idUsuarioDestinatario,idUsuarioLogado,conversa);
 
                     //apagar msg após enviado
                     editMensagem.setText("");
@@ -149,6 +177,10 @@ public class ChatActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+
 
     private Boolean salvarMensagemFirebase(String idRemetente, String idDestinatario, Mensagem mensagem){
         try{
@@ -164,6 +196,33 @@ public class ChatActivity extends AppCompatActivity {
             return false;
         }
 
+    }
+
+    private Boolean salvarConversaFirebase(String idRemetente, String idDestinatario, Conversa conversa){
+        try{
+            firebase = ConfiguracaoFirebase.getFirebase().child("conversas");
+            firebase.child(idRemetente)
+                    .child(idDestinatario)
+                    .setValue(conversa);
+
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        firebase.addValueEventListener(valueEventListenerChat);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        firebase.removeEventListener(valueEventListenerChat);
     }
 
 }
