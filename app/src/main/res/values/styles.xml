@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#6495ED</item>
-        <item name="colorPrimaryDark">#00008B</item>
+        <item name="colorPrimaryDark">#0277BD</item>
         <item name="colorAccent">#B0C4DE</item>
         <item name="android:windowBackground">@android:color/white</item>
         <!-- <item name="android:itemBackground">@android:color/white</item> -->
@@ -12,7 +12,7 @@
     </style>
 
     <style name="botaoPadrao" parent="Theme.AppCompat.Light">
-        <item name="android:colorButtonNormal">@color/colorPrimaryDarker</item>
+        <item name="android:colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
 

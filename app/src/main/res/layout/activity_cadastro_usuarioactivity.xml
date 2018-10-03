@@ -14,8 +14,9 @@
         android:layout_height="113dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        app:srcCompat="@drawable/user_creation" />
+        android:layout_marginTop="54dp"
+        app:srcCompat="@drawable/mainlogo"
+         />
 
     <EditText
         android:id="@+id/edit_cadastro_nome"

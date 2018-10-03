@@ -9,30 +9,20 @@
     tools:context=".activity.SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/createdby" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/imageView3"
-        android:layout_centerHorizontal="true"
-        android:text="COUTIN MESSENGER"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@android:color/black"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
         app:srcCompat="@drawable/mainlogo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView3"
+        android:layout_marginTop="186dp"
+        android:text="Created by Guilherme Coutinho" />
 </RelativeLayout>
