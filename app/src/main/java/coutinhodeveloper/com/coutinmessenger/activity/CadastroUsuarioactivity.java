@@ -61,11 +61,26 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (nome.getText().toString().isEmpty()){
+                    Toast.makeText(CadastroUsuarioactivity.this, "Preencha o nome", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (email.getText().toString().isEmpty()){
+                    Toast.makeText(CadastroUsuarioactivity.this, "Preencha o email", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (senha.getText().toString().isEmpty()){
+                    Toast.makeText(CadastroUsuarioactivity.this, "Preencha a senha", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
 
                 usuario = new Usuario();
                 usuario.setNome( nome.getText().toString() );
                 usuario.setEmail( email.getText().toString() );
                 usuario.setSenha( senha.getText().toString() );
+
+
                 cadastrarUsuario();
 
 

@@ -8,22 +8,25 @@
     android:gravity="center_vertical|center_horizontal"
     tools:context=".activity.LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="@dimen/largura_logo"
-        android:layout_height="@dimen/altura_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp"
         app:srcCompat="@drawable/mainlogo" />
 
     <EditText
         android:id="@+id/edit_login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="245dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/imageView7"
         android:ems="10"
         android:hint="Digite seu Email"
         android:inputType="textEmailAddress" />
@@ -34,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/edit_login_email"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Digite sua senha"
         android:inputType="textPassword" />
@@ -43,21 +47,23 @@
         android:theme="@style/botaoPadrao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="164dp"
+        android:layout_below="@+id/edit_login_senha"
+        android:layout_marginTop="15dp"
         android:text="@string/botao_logar" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="125dp"
+        android:layout_below="@+id/botao_logar"
+        android:layout_marginTop="25dp"
         android:onClick="abrirCadastroUsuario"
         android:text="@string/texto_cadastre"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/white" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
