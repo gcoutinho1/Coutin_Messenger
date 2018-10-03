@@ -37,7 +37,7 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
     private Button botaoCadastrar;
     private Usuario usuario;
 
-    public DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
+    public DatabaseReference firebase;
     private FirebaseAuth mAuth;
 
 
@@ -52,6 +52,7 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_usuarioactivity);
 
         mAuth = FirebaseAuth.getInstance();
+        firebase = ConfiguracaoFirebase.getFirebase();
 
         nome = findViewById(R.id.edit_cadastro_nome);
         email = findViewById(R.id.edit_cadastro_email);
@@ -102,8 +103,9 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     String identificador = Base64Custom.converterBase64(usuario.getEmail());
                     usuario.setId(identificador);
-                    //usuario.setId(FirebaseAuth.getInstance().getUid());
                     usuario.salvar();
+
+                    //usuario.setId(FirebaseAuth.getInstance().getUid());
                     Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();
                     finish();
 
