@@ -47,19 +47,7 @@ public class ContatosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        firebase.addValueEventListener(valueEventListenerContato);
 
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        firebase.removeEventListener(valueEventListenerContato);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -129,6 +117,20 @@ public class ContatosFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebase.addValueEventListener(valueEventListenerContato);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        firebase.removeEventListener(valueEventListenerContato);
+
     }
 
 }
