@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button botaoLogar;
     private Usuario usuario;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
     private String idUsuarioLogado;
 
     @Override
@@ -151,8 +151,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private void verificarUsuarioLogado(){
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            abrirTelaPrincipal();
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
+        }
+
+
+
+       /* FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull final FirebaseAuth firebaseAuth) {
@@ -164,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("AuthStateChanged", "No user is signed in.");
                 }
             }
-        });
+        }); */
 
        /* FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
         if (fUser.isEmailVerified()){
