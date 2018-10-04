@@ -10,7 +10,7 @@ import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 /** Created by Guilherme Coutinho
  *  on 17/09/2018
  */
-//@JsonIgnoreProperties({"id","senha"})
+@JsonIgnoreProperties({"id","senha"})
 public class Usuario {
 
     private String id;

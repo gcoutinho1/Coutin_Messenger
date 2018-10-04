@@ -61,6 +61,7 @@ public class ConversasFragment extends Fragment {
         arrayAdapter = new ConversaAdapter(getActivity(),conversas);
         listView.setAdapter(arrayAdapter);
 
+        firebase = ConfiguracaoFirebase.getFirebase();
         //recuperando conversas do firebase
         Preferencias preferencias = new Preferencias(getActivity());
         String idUsuarioLogado = preferencias.getIdentificador();

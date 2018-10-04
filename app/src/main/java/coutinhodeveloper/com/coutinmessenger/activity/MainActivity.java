@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                                 String identificadorUsuarioLogado = preferencias.getIdentificador();
                                 Contato contato = new Contato();
                                 contato.setIdentificadorUsuario(identificadorContato);
+                                assert usuarioContato != null;
                                 contato.setEmail(usuarioContato.getEmail());
                                 contato.setNome(usuarioContato.getNome());
 

@@ -41,6 +41,7 @@ public class ContatoAdapter extends ArrayAdapter<Contato> {
             //inicializa objeto para montagem do layout
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             //monta a view através do xml
+            assert inflater != null;
             view = inflater.inflate(R.layout.lista_contatos,parent,false);
 
             //recuperando elements para view

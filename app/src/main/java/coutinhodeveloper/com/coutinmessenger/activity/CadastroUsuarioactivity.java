@@ -100,9 +100,12 @@ public class CadastroUsuarioactivity extends AppCompatActivity {
                     usuario.setId(identificador);
                     usuario.salvar();
 
-                    String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
                     Preferencias preferencias = new Preferencias(CadastroUsuarioactivity.this);
-                    preferencias.salvarDados(identificadorUsuarioLogado,usuario.getNome());
+                    preferencias.salvarDados(identificador,usuario.getNome());
+
+                   // String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail()); -- primeira mudança
+                    //Preferencias preferencias = new Preferencias(CadastroUsuarioactivity.this); -- primeira mudança
+                   // preferencias.salvarDados(identificadorUsuarioLogado,usuario.getNome()); -- primeira mudança
 
                     //usuario.setId(FirebaseAuth.getInstance().getUid());
                     Toast.makeText(CadastroUsuarioactivity.this, "Sucesso ao cadastrar",Toast.LENGTH_LONG).show();

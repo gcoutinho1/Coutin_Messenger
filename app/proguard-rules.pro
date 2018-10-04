@@ -23,13 +23,11 @@
 -keepattributes *Annotation*
 #-dontwarn
 
-#-keep class com.fasterxml.jackson.databind.ObjectMapper {
-#    public <methods>;
-#    protected <methods>;
-#}
-#-keep class com.fasterxml.jackson.databind.ObjectWriter {
-#    public ** writeValueAsString(**);
-#}
-#-keepnames class com.fasterxml.jackson.** { *; }
-#-dontwarn com.fasterxml.jackson.databind.**
+-keepclassmembers class com.myapp.models.** { *; }
+
+-keep class com.fasterxml.jackson.annotation.** { *; }
+
+-dontwarn com.fasterxml.jackson.databind.**
+
+-dontwarn org.springframework.**
 

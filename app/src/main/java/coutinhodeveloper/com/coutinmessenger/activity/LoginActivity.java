@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.util.Objects;
+
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.application.ConfiguracaoFirebase;
 import coutinhodeveloper.com.coutinmessenger.helper.Base64Custom;
@@ -56,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         firebase = ConfiguracaoFirebase.getFirebase();
-
         verificarUsuarioLogado();
 
         email = findViewById(R.id.edit_login_email);
@@ -80,24 +81,15 @@ public class LoginActivity extends AppCompatActivity {
                 usuario = new Usuario();
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
-
-
                 validarLogin();
-
             }
         });
-
-
-
-
     }
-
     public void abrirCadastroUsuario(View view){
 
         Intent intent = new Intent(LoginActivity.this,CadastroUsuarioactivity.class);
         startActivity(intent);
     }
-
     private void validarLogin(){
 
         mAuth.signInWithEmailAndPassword(usuario.getEmail(),usuario.getSenha())
@@ -111,17 +103,38 @@ public class LoginActivity extends AppCompatActivity {
                             firebase = ConfiguracaoFirebase.getFirebase()
                                     .child("usuarios")
                                     .child(idUsuarioLogado);
+
+                            Preferencias preferencias = new Preferencias(LoginActivity.this);
+                            preferencias.salvarDados(idUsuarioLogado,usuario.getNome());
+
                             firebase.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
 
-                                    // salvando email no SharedPreferences
-                                    String identificadorUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                                   /* //Salvar email nas preferencias
+
+                                    String idUsuarioLogado = null;
+                                    if (usuario != null) {
+                                        idUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                                    }
                                     Preferencias preferencias = new Preferencias(LoginActivity.this);
-                                    preferencias.salvarDados(identificadorUsuarioLogado,usuario.getNome());
+                                    if (usuario != null) {
+                                        preferencias.salvarDados(idUsuarioLogado, usuario.getNome() );
+                                    } */
 
                                     abrirTelaPrincipal();
+
+                                     //   idUsuarioLogado = Base64Custom.converterBase64(usuario.getEmail());
+                                     //   Preferencias preferencias = new Preferencias(LoginActivity.this);
+                                     //   preferencias.salvarDados(idUsuarioLogado,usuario.getEmail());
+
+                                    //Preferencias preferencias = new Preferencias(LoginActivity.this); 2
+                                    //if (usuario != null) {
+                                    //    preferencias.salvarDados(idUsuarioLogado,usuario.getNome()); 2
+                                    //}
+
+                                    //abrirTelaPrincipal();
                                 }
 
                                 @Override
