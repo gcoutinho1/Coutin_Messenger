@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.activity.ChatActivity;
@@ -50,7 +51,7 @@ public class ContatosFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // instanciar objetos
         contatos = new ArrayList<>();
@@ -67,7 +68,7 @@ public class ContatosFragment extends Fragment {
                 contatos
 
         ); */
-        adapter = new ContatoAdapter(getActivity(),contatos);
+        adapter = new ContatoAdapter(Objects.requireNonNull(getActivity()),contatos);
         listView.setAdapter(adapter);
         // recuperando contatos do firebase
         Preferencias preferencias = new Preferencias(getActivity());

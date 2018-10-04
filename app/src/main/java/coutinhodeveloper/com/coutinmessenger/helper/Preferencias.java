@@ -1,5 +1,6 @@
 package coutinhodeveloper.com.coutinmessenger.helper;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -20,6 +21,7 @@ public class Preferencias {
     private final String CHAVE_NOME = "nome";
 
 
+    @SuppressLint("CommitPrefEdits")
     public Preferencias (Context contextoParametro){
         contexto = contextoParametro;
         preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE);
@@ -29,7 +31,7 @@ public class Preferencias {
     public  void salvarDados( String identificador, String nome ){
         editor.putString(CHAVE_IDENTIFICADOR, identificador);
         editor.putString(CHAVE_NOME, nome);
-        editor.commit();
+        editor.apply();
     }
 
     public String getIdentificador(){

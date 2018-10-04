@@ -46,6 +46,7 @@ public class ConversaAdapter extends ArrayAdapter<Conversa> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             // monta a view apartir do xml
+            assert inflater != null;
             view = inflater.inflate(R.layout.lista_conversas,parent,false);
 
             // recuperando elementos da tela

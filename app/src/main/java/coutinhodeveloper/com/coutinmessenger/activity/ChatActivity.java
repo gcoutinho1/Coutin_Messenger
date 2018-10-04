@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import coutinhodeveloper.com.coutinmessenger.R;
 import coutinhodeveloper.com.coutinmessenger.adapter.ChatAdapter;
@@ -73,7 +74,7 @@ public class ChatActivity extends AppCompatActivity {
         if (extra != null){
             //Recuperar dados do contato(destinatario)
             nomeUsuarioDestinatario = extra.getString("nome");
-            idUsuarioDestinatario = Base64Custom.converterBase64(extra.getString("email"));
+            idUsuarioDestinatario = Base64Custom.converterBase64(Objects.requireNonNull(extra.getString("email")));
 
         }
 

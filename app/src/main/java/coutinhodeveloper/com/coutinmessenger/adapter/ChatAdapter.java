@@ -50,9 +50,11 @@ public class ChatAdapter extends ArrayAdapter<Mensagem> {
 
             // montar a view atraves do xml
             if (idUsuarioLogado.equals(mensagem.getIdUsuario())){
+                assert layoutInflater != null;
                 view = layoutInflater.inflate(R.layout.item_mensagem_direita,parent,false);
 
             }else {
+                assert layoutInflater != null;
                 view = layoutInflater.inflate(R.layout.item_mensagem_esquerda,parent,false);
             }
 
